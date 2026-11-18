@@ -1,9 +1,16 @@
+
 tasks = []
 next_id = 1
 
 
 def add_task(title):
     global next_id
+
+    if not title.strip():
+        print("Error: Task title cannot be empty.")
+        return
+
+    title = title.strip()
 
     task = {
         "id": next_id,
@@ -31,6 +38,16 @@ def display_tasks():
         print("-" * 30)
 
 
+def complete_task(task_id):
+    for task in tasks:
+        if task["id"] == task_id:
+            task["completed"] = True
+            print("Task marked as completed!")
+            return
+
+    print("Task not found.")
+
+
 def delete_task(task_id):
     for task in tasks:
         if task["id"] == task_id:
@@ -40,13 +57,15 @@ def delete_task(task_id):
 
     print("Task not found.")
 
+
 def main():
     while True:
         print("\n===== STUDENT TASK MANAGER =====")
         print("1. Add Task")
         print("2. View Tasks")
-        print("3. Delete Task")
-        print("4. Exit")
+        print("3. Complete Task")
+        print("4. Delete Task")
+        print("5. Exit")
 
         choice = input("Enter your choice: ")
 
@@ -59,12 +78,19 @@ def main():
 
         elif choice == "3":
             try:
+                task_id = int(input("Enter task ID to complete: "))
+                complete_task(task_id)
+            except ValueError:
+                print("Please enter a valid numeric ID.")
+
+        elif choice == "4":
+            try:
                 task_id = int(input("Enter task ID to delete: "))
                 delete_task(task_id)
             except ValueError:
                 print("Please enter a valid numeric ID.")
 
-        elif choice == "4":
+        elif choice == "5":
             print("Exiting application.")
             break
 
