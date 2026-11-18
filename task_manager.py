@@ -8,6 +8,7 @@ def add_task(title):
     if not title.strip():
         print("Error: Task title cannot be empty.")
         return
+    title = title.strip()
 
     task = {
         "id": next_id,
