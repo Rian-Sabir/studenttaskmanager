@@ -31,6 +31,15 @@ def display_tasks():
         print("-" * 30)
 
 
+def delete_task(task_id):
+    for task in tasks:
+        if task["id"] == task_id:
+            tasks.remove(task)
+            print("Task deleted successfully!")
+            return
+
+    print("Task not found.")
+
 def main():
     while True:
         print("\n===== STUDENT TASK MANAGER =====")
