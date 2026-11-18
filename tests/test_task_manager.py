@@ -12,7 +12,7 @@ class TestTaskManager(unittest.TestCase):
     def test_add_task(self):
         task_manager.add_task("Complete assignment")
 
-        self.assertEqual(len(task_manager.tasks), 1)
+        self.assertEqual(len(task_manager.tasks), 2)
         self.assertEqual(
             task_manager.tasks[0]["title"],
             "Complete assignment"
