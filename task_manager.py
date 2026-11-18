@@ -45,7 +45,8 @@ def main():
         print("\n===== STUDENT TASK MANAGER =====")
         print("1. Add Task")
         print("2. View Tasks")
-        print("3. Exit")
+        print("3. Delete Task")
+        print("4. Exit")
 
         choice = input("Enter your choice: ")
 
@@ -57,6 +58,13 @@ def main():
             display_tasks()
 
         elif choice == "3":
+            try:
+                task_id = int(input("Enter task ID to delete: "))
+                delete_task(task_id)
+            except ValueError:
+                print("Please enter a valid numeric ID.")
+
+        elif choice == "4":
             print("Exiting application.")
             break
 
