@@ -31,6 +31,16 @@ def display_tasks():
         print("-" * 30)
 
 
+def complete_task(task_id):
+    for task in tasks:
+        if task["id"] == task_id:
+            task["completed"] = True
+            print("Task marked as completed!")
+            return
+
+    print("Task not found.")
+
+
 def main():
     while True:
         print("\n===== STUDENT TASK MANAGER =====")
